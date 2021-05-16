@@ -1,29 +1,32 @@
-<%-- 
-    Document   : processaInclusao
-    Created on : 03/05/2021, 09:22:45
-    Author     : Francielle
---%>
-
-<%@page import="AulaDao.UsuarioDao"%>
-<%@page import="AulaDao.Usuarios"%>
+<%@page import="AgendaDAO.AgendaDAO"%>
+<%@page import="AgendaDAO.Agenda"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Agenda - Cadastro</title>
     </head>
     <body>
         
         <%
-            String usuario = request.getParameter("login");
-            String senha = request.getParameter("senha");
-            Usuarios usu = new Usuarios();
-            UsuarioDao usuD = new UsuarioDao();
-            usu.setLogin(usuario);
-            usu.setPasswd(senha);
-            usuD.inserirUsuario(usu);
-            response.sendRedirect("lstusuarios.jsp");
+            Agenda agenda = new Agenda();
+            AgendaDAO agendaDAO = new AgendaDAO();
+            
+            String titlo = request.getParameter("titulo");
+            String descricao = request.getParameter("descricao");
+            String data_hora = request.getParameter("data_hora");
+            String duracao = request.getParameter("duracao");
+            String local = request.getParameter("local");
+            
+            agenda.setTitulo(titlo);
+            agenda.setDescricao(descricao);
+            agenda.setData_hora(data_hora);
+            agenda.setDuracao(duracao);
+            agenda.setLocal(local);
+            
+            agendaDAO.inserir(agenda);
+            response.sendRedirect("listaAgendamentos.jsp");
         %>
         
         

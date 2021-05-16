@@ -1,34 +1,33 @@
-<%-- 
-    Document   : processaAlteração
-    Created on : 04/05/2021, 01:40:48
-    Author     : Francielle
---%>
-
-<%@page import="AulaDao.UsuarioDao"%>
-<%@page import="AulaDao.Usuarios"%>
+<%@page import="AgendaDAO.Agenda"%>
+<%@page import="AgendaDAO.AgendaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title> Agenda - Alterar </title>
     </head>
     <body>
     <%
+        Agenda agenda = new Agenda();     
+        AgendaDAO agendaDAO = new AgendaDAO();
+        
         int id = Integer.parseInt(request.getParameter("id").trim());
-        String usuario = request.getParameter("login").trim();
-        String senha = request.getParameter("senha").trim();
+        String titulo = request.getParameter("titulo").trim();
+        String descricao = request.getParameter("descricao").trim();
+        String local = request.getParameter("local").trim();
+        String data_hora = request.getParameter("data_hora").trim();
+        String duracao = request.getParameter("duracao").trim();
         
-        Usuarios usu = new Usuarios();     
-        UsuarioDao usuD = new UsuarioDao();
-        usu.setId(id);
-        usu.setLogin(usuario);
-        usu.setPasswd(senha);
-        usuD.alteraUsuario(usu);
+        agenda.setId(id);
+        agenda.setTitulo(titulo);
+        agenda.setDescricao(descricao);
+        agenda.setLocal(local);
+        agenda.setData_hora(data_hora);
+        agenda.setDuracao(duracao);
+        agendaDAO.alterar(agenda);
         
-        response.sendRedirect("lstusuarios.jsp");
+        response.sendRedirect("index.jsp");
     %>
-    
-    
     </body>
 </html>
