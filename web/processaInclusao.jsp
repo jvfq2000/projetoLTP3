@@ -26,7 +26,7 @@
             agenda.setLocal(local);
             
             agendaDAO.inserir(agenda);
-            response.sendRedirect("listaAgendamentos.jsp");
+            response.sendRedirect("index.jsp");
         %>
         
         

@@ -12,7 +12,7 @@
         int agenda_id = Integer.parseInt(request.getParameter("id"));
 
         agendaDAO.excluir(agenda_id);
-        response.sendRedirect("listaAgendamentos.jsp");
+        response.sendRedirect("index.jsp");
     %> 
     </body>
 </html>
